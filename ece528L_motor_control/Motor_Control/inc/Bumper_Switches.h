@@ -57,7 +57,12 @@
 void (*Bumper_Task)(uint8_t bumper_switch_state);
 
 /**
- * @brief
+ * @brief Initialize the Bumper Switches on Port 4 to generate falling edge-triggered interrupts.
+ *
+ * This function configures P4.7, P4.6, P4.5, P4.3, P4.2, and P4.0 as GPIO input pins with pull-up
+ * resistors enabled. The pins are set up to trigger an interrupt on a falling edge (when a switch is pressed),
+ * any old interrupt flags are cleared, and the interrupts are enabled. It also sets the interrupt priority
+ * level to 0 and enables IRQ 38 (Port 4) in the NVIC.
  *
  * @param task A pointer to the user-defined function that will be called on a falling edge event.
  *

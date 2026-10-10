@@ -24,13 +24,18 @@
 #define TIMER_A0_PERIOD_CONSTANT 15000
 
 /**
- * @brief
+ * @brief Initialize Timer A0 to generate two PWM signals on P2.6 (PM_TA0.3) and P2.7 (PM_TA0.4).
  *
- * @param period_constant
+ * This function sets P2.6 and P2.7 to their peripheral function mode as outputs, then configures Timer A0
+ * in Up/Down mode using SMCLK (12 MHz) with the timer clock divided by 8. CCR[3] and CCR[4] use the
+ * Toggle / Reset output mode. With the period constant set to 15000, the PWM signals have a period of 20 ms.
+ * The function returns right away if either duty cycle is greater than or equal to the period constant.
  *
- * @param duty_cycle_1
+ * @param period_constant The value stored in CCR[0] which sets the period of the PWM signals.
  *
- * @param duty_cycle_2
+ * @param duty_cycle_1 The initial duty cycle for the PWM signal on P2.6 (PM_TA0.3, CCR[3]).
+ *
+ * @param duty_cycle_2 The initial duty cycle for the PWM signal on P2.7 (PM_TA0.4, CCR[4]).
  *
  * @return None
  */
